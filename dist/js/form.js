@@ -1,5 +1,7 @@
 'use strict';
 
+import { Sweetalert } from './sweetalert.js';
+
 export class Form {
 
   static createNote(notesLocal, type, subject, notes) {
@@ -13,6 +15,8 @@ export class Form {
     });
 
     localStorage.setItem('notes', JSON.stringify(notesArr));
+
+    Sweetalert.resultMessage('success', 'Added Successfully', 'Note has been added');
   }
 
   static clearFields(type, subject, notes) {

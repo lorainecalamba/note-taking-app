@@ -1,5 +1,7 @@
 'use strict';
 
+import { Sweetalert } from './sweetalert.js';
+
 export class Notes {
   static getNotes() {
     let notes;
@@ -61,14 +63,32 @@ export class Notes {
 
   // remove from local storage
   static removeNoteFromStorage(index) {
-    const notesArr = this.getNotes();
-    const arrIndex = index;
-    const divContainer = document.getElementById('note-' + index);
 
-    divContainer.remove();
-    notesArr.splice(arrIndex, 1);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const notesArr = this.getNotes();
+        const arrIndex = index;
+        const divContainer = document.getElementById('note-' + index);
 
-    localStorage.setItem('notes', JSON.stringify(notesArr));
+        divContainer.remove();
+        notesArr.splice(arrIndex, 1);
+
+        localStorage.setItem('notes', JSON.stringify(notesArr));
+
+        Sweetalert.resultMessage('success', 'Deleted Successfully', 'Note has been deleted');
+      }
+    })
+
+
+
   }
 
   static updateNote(index, type, subject, notes) {
@@ -79,5 +99,7 @@ export class Notes {
     notesArr[index].notes = notes;
 
     localStorage.setItem('notes', JSON.stringify(notesArr));
+
+    Sweetalert.resultMessage('success', 'Successfully updated', 'Note has been updated');
   }
 }
