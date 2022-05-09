@@ -13,9 +13,9 @@ export class Notes {
   }
 
   static displayNotes() {
-    const notesArr = Notes.getNotes();
+    const notesArr = this.getNotes();
 
-    notesArr.forEach((element, index) => Notes.addNotesToDiv(element, index));
+    notesArr.forEach((element, index) => this.addNotesToDiv(element, index));
   }
 
   static addNotesToDiv(element, index) {
@@ -61,7 +61,7 @@ export class Notes {
 
   // remove from local storage
   static removeNoteFromStorage(index) {
-    const notesArr = Notes.getNotes();
+    const notesArr = this.getNotes();
     const arrIndex = index;
     const divContainer = document.getElementById('note-' + index);
 
@@ -72,7 +72,7 @@ export class Notes {
   }
 
   static updateNote(index, type, subject, notes) {
-    const notesArr = Notes.getNotes();
+    const notesArr = this.getNotes();
 
     notesArr[index].type = type;
     notesArr[index].subject = subject;
