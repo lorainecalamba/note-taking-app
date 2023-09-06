@@ -63,9 +63,10 @@ formCreate.addEventListener('submit', function (e) {
     notes: notes.value
   };
 
-
   Notes.addNotesToDiv(noteValues, index);
   Form.clearFields(type, subject, notes);
+
+  location.reload();
   // Form.generateRandomID();
 });
 
@@ -78,5 +79,7 @@ formModify.addEventListener('submit', function (e) {
   // close modal
   const bsModal = bootstrap.Modal.getInstance(editNoteModal);
   bsModal.hide();
+
+  location.reload();
 });
 

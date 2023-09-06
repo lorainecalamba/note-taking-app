@@ -21,7 +21,7 @@ export class Notes {
   }
 
   static addNotesToDiv(element, index) {
-    const notesContainer = document.getElementById('note-full-container');
+    let notesContainer = document.getElementById('note-full-container');
     const classes = ['col-md-4', 'single-note-item', 'all-category', 'mt-3'];
     const div = document.createElement('div');
 
@@ -35,7 +35,7 @@ export class Notes {
           data-noteheading="${element.subject}"
         >
           ${element.subject} 
-          <i class="point fa fa-circle ml-1 font-10"></i>
+          
         </h5>
         <p class="note-date font-12 text-muted"></p>
         <div class="note-content">
@@ -51,7 +51,7 @@ export class Notes {
             <i class="fa-solid fa-pen-to-square"></i>
           </button>
 
-          <button type="button" yygu
+          <button type="button"
           class="btn btn-danger remove-note" data-index="${index}">
             <i class="fa fa-trash"></i>
           </button>
